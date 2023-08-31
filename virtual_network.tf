@@ -1,5 +1,3 @@
-
-
 ## virtual network
 data "azurerm_virtual_network" "vnet" {
   count = var.virtual_network_create ? 0 : 1
@@ -11,8 +9,8 @@ data "azurerm_virtual_network" "vnet" {
 resource "azurerm_virtual_network" "vnet" {
   for_each = var.virtual_network_name
 
-  resource_group_name = var.resource_group_name
-  location            = var.location
+  resource_group_name = format("%s", var.resource_group_name)
+  location            = format("%s", var.location)
 
   name                = each.value.name
   address_space       = each.value.address_space

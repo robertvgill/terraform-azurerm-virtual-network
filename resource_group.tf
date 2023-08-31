@@ -9,7 +9,7 @@ resource "azurerm_resource_group" "rg" {
   count = var.resource_group_create ? 1 : 0
 
   name     = format("%s", var.resource_group_name)
-  location = var.location
+  location = format("%s", var.location)
 
   lifecycle {
     prevent_destroy = false

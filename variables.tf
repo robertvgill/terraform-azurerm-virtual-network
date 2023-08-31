@@ -25,14 +25,31 @@ variable "virtual_network_name" {
   default     = {}
 }
 
-variable "nw_address_space" {
-  description = "The address space to be used for the Azure virtual network."
-  default     = []
+variable "subnet_name" {
+  description = "For each subnet, create an object that contain fields."
+  default     = {}
 }
 
-variable "nw_dns_servers" {
-  description = "List of dns servers to use for the Azure virtual network."
-  default     = []
+variable "network_security_group_name" {
+  description = "The name of the network security group."
+  type        = string
+  default     = null
+}
+
+variable "route_table" {
+  description = "For each route table, create an object that contain fields."
+  default     = {}
+}
+
+variable "route_table_create" {
+  type        = string
+  default     = false
+}
+
+variable "disable_bgp_route_propagation" {
+  description = "(Optional) Boolean flag which controls propagation of routes learned by BGP on that route table. True means disable."
+  type        = bool
+  default     = false
 }
 
 variable "tags" {
