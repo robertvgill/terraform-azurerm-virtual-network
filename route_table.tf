@@ -27,3 +27,14 @@ resource "azurerm_route_table" "rt" {
     }
   }
 }
+/**
+resource "azurerm_subnet_route_table_association" "rtassoc" {
+  for_each = {
+    for subnet in var.subnet_name:
+      subnet.name => subnet.id
+  }
+
+  subnet_id      = azurerm_subnet.snet[each.key].id
+  route_table_id = azurerm_route_table.rt[each.key].id
+}
+**/
